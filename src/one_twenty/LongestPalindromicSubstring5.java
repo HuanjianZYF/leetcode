@@ -9,39 +9,47 @@ import java.util.*;
 public class LongestPalindromicSubstring5 {
 	
 	public static void main(String[] args) {
-		System.out.println(new LongestPalindromicSubstring5().longestPalindrome("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"));
+		long t1 = System.nanoTime();
+		System.out.println(new LongestPalindromicSubstring5().longestPalindrome("ccc"));
+		long t2 = System.nanoTime();
+		System.out.println(t2 - t1);
 	}
 	
 	public String longestPalindrome(String s) {
-		if (s.length() == 0) {
+		final int DIVIDE_SIZE = 30;
+		final int MATCH_LENGTH = 5;
+
+		int length = s.length();
+		if (length == 0) {
 			return "";
 		}
-		Map<Character, List<Integer>> map = getStrCharacterPositionMap(s);
-		List<Block> blocks = transCharMap2BlockList(map);
-		Collections.sort(blocks, (a, b) -> b.length - a.length);
-		for (Block block : blocks) {
-			String subStr = s.substring(block.start, block.end + 1);
-			if (isPalindrome(subStr)) {
-				return subStr;
+		
+		//对长度大于20的 想办法先做一些优化
+		if (length > DIVIDE_SIZE) {
+			//如果某5个字符的倒序都不存在，则可以以那五个字符为界分为两个字符串
+			for (int i = 0; i < length - MATCH_LENGTH; i++) {
+				String pattern = s.substring(i, i + MATCH_LENGTH);
+				if (!isPalindrome(s)) {
+					String reversePattern = new StringBuilder(pattern).reverse().toString();
+					if (!s.contains(reversePattern)) {
+						String s1 = longestPalindrome(s.substring(0, i + MATCH_LENGTH - 1));
+						String s2 = longestPalindrome(s.substring(i + 1));
+
+						return s1.length() > s2.length() ? s1 : s2;
+					}
+				}
 			}
 		}
-		return s.substring(0, 1);
+		
+		return doGetLongestPalindrome(s);
 	}
-
-	private boolean isPalindrome(String x) {
-		StringBuilder sb = new StringBuilder(x);
-		sb.reverse();
-		String s2 = sb.toString();
-
-		return x.equals(s2);
-	}
-
-	/**
-	 * 将字符出现位置的map转化为一个禁区list o(n)
-	 */
-	private List<Block> transCharMap2BlockList(Map<Character, List<Integer>> map) {
-		List<Block> resultList = new ArrayList<>();
-
+	
+	private String doGetLongestPalindrome(String s) {
+		//先统计每个字符在字符串中的位置，组装成一个map
+		Map<Character, List<Integer>> map = getStrCharacterPositionMap(s);
+		
+		int maxLength = 0;
+		String subStr = null;
 		for (Map.Entry<Character, List<Integer>> entry : map.entrySet()) {
 			List<Integer> list = entry.getValue();
 			if (list.size() < 2) {
@@ -49,14 +57,37 @@ public class LongestPalindromicSubstring5 {
 			}
 			for (int i = 0; i < list.size() - 1; i++) {
 				for (int j = 1; j < list.size(); j++) {
-					resultList.add(new Block(list.get(i), list.get(j), list.get(j) - list.get(i)));
+					if (list.get(j) - list.get(i) + 1 > maxLength) {
+						String temp = s.substring(list.get(i), list.get(j) + 1);
+						if (isPalindrome(temp)) {
+							subStr = temp;
+							maxLength = subStr.length();
+						}
+					}
 				}
 			}
 		}
-
-		return resultList;
+		
+		if (maxLength >= 1) {
+			return subStr;
+		}
+		return s.substring(0, 1);
 	}
 
+	private boolean isPalindrome(String x) {
+		if (x.length() <= 1) {
+			return true;
+		}
+		int length = x.length();
+		for (int i = 0; i < length / 2; i ++) {
+			if (x.charAt(i) != x.charAt(length - i - 1)) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
 	/**
 	 * 获取字符串中每个字符的位置的列表 o(n)
 	 * @param s 字符串
@@ -77,16 +108,5 @@ public class LongestPalindromicSubstring5 {
 
 		return map;
 	}
-	
-	private class Block {
-		private int start;
-		private int end;
-		private int length;
 
-		public Block(int start, int end, int length) {
-			this.start = start;
-			this.end = end;
-			this.length = length;
-		}
-	}
 }
