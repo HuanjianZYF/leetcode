@@ -4,7 +4,7 @@ package twenty_forty;
  * @author zyf
  * @date 2018/9/15 上午8:26
  */
-public class RemoveDuplicates {
+public class RemoveDuplicates26 {
 
 	public int removeDuplicates(int[] nums) {
 		int ptr = 0;
