@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d1686f32-247e-4318-8aa8-6ef9ff66d493" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/one_twenty/FourSum18.java" afterPath="$PROJECT_DIR$/src/one_twenty/FourSum18.java" />
-      <change beforePath="$PROJECT_DIR$/src/one_twenty/ThreeSum15.java" afterPath="$PROJECT_DIR$/src/one_twenty/ThreeSum15.java" />
+      <change beforePath="$PROJECT_DIR$/src/one_twenty/ThreeSumClosest16.java" afterPath="$PROJECT_DIR$/src/one_twenty/ThreeSumClosest16.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -56,8 +55,8 @@
       <file leaf-file-name="ThreeSumClosest16.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/one_twenty/ThreeSumClosest16.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="31" column="17" lean-forward="true" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
+            <state relative-caret-position="253">
+              <caret line="54" column="5" lean-forward="true" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -832,7 +831,7 @@
       <workItem from="1536970038563" duration="8377000" />
       <workItem from="1537232258250" duration="11626000" />
       <workItem from="1537318592421" duration="12089000" />
-      <workItem from="1537406146287" duration="8714000" />
+      <workItem from="1537406146287" duration="9542000" />
     </task>
     <task id="LOCAL-00001" summary="回文 括号">
       <created>1536232367921</created>
@@ -890,11 +889,18 @@
       <option name="project" value="LOCAL" />
       <updated>1537358407198</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="closest 3 sum">
+      <created>1537415164942</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1537415164943</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92605000" />
+    <option name="totallyTimeSpent" value="93433000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="797" extended-state="0" />
@@ -969,7 +975,8 @@
     <MESSAGE value="集合内求和达到某个值" />
     <MESSAGE value="3Sum" />
     <MESSAGE value="hah" />
-    <option name="LAST_COMMIT_MESSAGE" value="hah" />
+    <MESSAGE value="closest 3 sum" />
+    <option name="LAST_COMMIT_MESSAGE" value="closest 3 sum" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -993,7 +1000,7 @@
           <option name="timeStamp" value="37" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="62" />
+      <option name="time" value="66" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1423,8 +1430,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/one_twenty/ThreeSumClosest16.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="31" column="17" lean-forward="true" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
+        <state relative-caret-position="253">
+          <caret line="54" column="5" lean-forward="true" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
           <folding />
         </state>
       </provider>

@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class ThreeSumClosest16 {
 	
 	public static void main(String[] args) {
-		System.out.println(new ThreeSumClosest16().threeSumClosest(new int[]{-4,-1,1,2},-10));
+		System.out.println(new ThreeSumClosest16().threeSumClosest(new int[]{1,-3,3,5,4,1},1));
 	}
 	
 	public int threeSumClosest(int[] nums, int target) {
@@ -83,7 +83,7 @@ public class ThreeSumClosest16 {
 					diff = nowDiff;
 					flag = true;
 				}
-				end = mid - 1;
+				end = mid;
 			}
 		}
 		
