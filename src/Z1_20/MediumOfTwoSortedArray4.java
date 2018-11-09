@@ -1,8 +1,6 @@
-package one_twenty;
+package Z1_20;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * 寻找两个有序数组的中位数

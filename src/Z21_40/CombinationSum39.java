@@ -1,4 +1,4 @@
-package twenty_forty;
+package Z21_40;
 
 import java.util.ArrayList;
 import java.util.Arrays;

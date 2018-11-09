@@ -1,6 +1,4 @@
-package forty_sixty;
-
-import java.util.List;
+package Z41_60;
 
 /**
  * @author zyf

@@ -1,6 +1,4 @@
-package twenty_forty;
-
-import one_twenty.AddTwoNum2;
+package Z21_40;
 
 /**
  * @author zyf

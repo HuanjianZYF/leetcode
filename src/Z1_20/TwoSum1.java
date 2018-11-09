@@ -1,4 +1,4 @@
-package one_twenty;
+package Z1_20;
 
 /**
  * problem1
