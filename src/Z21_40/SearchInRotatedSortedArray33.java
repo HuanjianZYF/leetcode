@@ -15,8 +15,7 @@ public class SearchInRotatedSortedArray33 {
     public int search(int[] nums, int target) {
         int len = nums.length;
         if (len <= 2) {
-            int result = commonSearch(nums, target);
-            return result >= 0 ? result : result;
+            return commonSearch(nums, target);
         }
 
         int head = nums[0];
